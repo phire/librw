@@ -139,7 +139,6 @@ int32 u_fogColor;
 
 // Scene
 int32 u_proj;
-int32 u_view;
 
 // Object
 int32 u_world;
@@ -1118,9 +1117,11 @@ flushCache(void)
 			uniformStateDirty[i] = true;
 	}
 
-	if(sceneDirty){
-		glUniformMatrix4fv(U(u_proj), 1, 0, uniformScene.proj);
-		glUniformMatrix4fv(U(u_view), 1, 0, uniformScene.view);
+	if(sceneDirty || objectDirty) {
+		RawMatrix view_project;
+		RawMatrix::mult(&view_project, reinterpret_cast<RawMatrix*>(&uniformScene.view), reinterpret_cast<RawMatrix*>(&uniformScene.proj));
+
+		glUniformMatrix4fv(U(u_proj), 1, 0, (float*)&view_project);
 		sceneDirty = 0;
 	}
 
@@ -1817,7 +1818,6 @@ initOpenGL(void)
 //	u_fogDisable = registerUniform("u_fogDisable");
 	u_fogColor = registerUniform("u_fogColor");
 	u_proj = registerUniform("u_proj");
-	u_view = registerUniform("u_view");
 	u_world = registerUniform("u_world");
 	u_ambLight = registerUniform("u_ambLight");
 	u_lightParams = registerUniform("u_lightParams");

@@ -12,7 +12,7 @@ const char *matfx_env_vert_src =
 "main(void)\n"
 "{\n"
 "	vec4 Vertex = u_world * vec4(in_pos, 1.0);\n"
-"	gl_Position = u_proj * u_view * Vertex;\n"
+"	gl_Position = u_proj * Vertex;\n"
 "	vec3 Normal = mat3(u_world) * in_normal;\n"
 
 "	v_tex0 = in_tex0;\n"

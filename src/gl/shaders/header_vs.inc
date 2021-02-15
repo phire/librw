@@ -43,11 +43,9 @@ const char *header_vert_src =
 "layout(std140) uniform Scene\n"
 "{\n"
 "	mat4 u_proj;\n"
-"	mat4 u_view;\n"
 "};\n"
 "#else\n"
 "uniform mat4 u_proj;\n"
-"uniform mat4 u_view;\n"
 "#endif\n"
 
 "#define MAX_LIGHTS 8\n"

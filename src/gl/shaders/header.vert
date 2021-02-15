@@ -42,11 +42,9 @@ uniform vec4  u_fogColor;
 layout(std140) uniform Scene
 {
 	mat4 u_proj;
-	mat4 u_view;
 };
 #else
 uniform mat4 u_proj;
-uniform mat4 u_view;
 #endif
 
 #define MAX_LIGHTS 8

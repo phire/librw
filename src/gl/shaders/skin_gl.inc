@@ -18,7 +18,7 @@ const char *skin_vert_src =
 "	}\n"
 
 "	vec4 Vertex = u_world * vec4(SkinVertex, 1.0);\n"
-"	gl_Position = u_proj * u_view * Vertex;\n"
+"	gl_Position = u_proj * Vertex;\n"
 "	vec3 Normal = mat3(u_world) * SkinNormal;\n"
 
 "	v_tex0 = in_tex0;\n"
